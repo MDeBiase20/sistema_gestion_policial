@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include('../../../app/config.php');
 
 $id_arma = $_POST['id_armas'];
@@ -25,28 +25,18 @@ $sentencia->bindParam('id_armas', $id_arma);
 
 try {
     $sentencia->execute();
+    session_start();
     $_SESSION['mensaje'] = 'El arma se actualizó de manera correcta';
     $_SESSION['icono'] = 'success';
-    header('Location:'.APP_URL.'/admin/armamento');
+    header('Location:'.APP_URL.'/admin');
 
 } catch (PDOException $e) {
+    session_start();
     $_SESSION['mensaje'] = 'Error al actualizar el arma'. $e->getMessage();
     $_SESSION['icono'] = 'error';
     header('Location:'.APP_URL.'/admin/armamento/edit.php');
 }
 
 exit();
-
-// if($sentencia->execute()){
-    
-//     $_SESSION['mensaje'] = 'El arma se actualizó de manera correcta';
-//     $_SESSION['icono'] = 'success';
-//     header('Location:'.APP_URL.'/admin/armamento');
-// }else{
-    
-//     $_SESSION['mensaje'] = 'Error al actualizar el arma';
-//     $_SESSION['icono'] = 'error';
-//     ?> <script>window.history.back()</script>  <?php
-// }
 
 ?>

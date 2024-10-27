@@ -36,7 +36,15 @@ include('../../admin/layout/header.php');
                                         </div>
                                         <div class="col-md-4">
                                             <label for="">Número de serie</label>
-                                            <input type="number" name="num_serie" class="form form-control">
+                                            <input type="number" name="num_serie" class="form form-control" oninput="limitarDigitos(this, 5)" placeholder="Ingrese un número de 5 dígitos">
+                                                        <!-- Este script hace que el número a ingresar se limite a 5 dígitos para evitar datos erroneos-->
+                                                <script>
+                                                    function limitarDigitos(input, maxLength) {
+                                                        if (input.value.length > maxLength) {
+                                                            input.value = input.value.slice(0, maxLength);
+                                                        }
+                                                    }
+                                                </script>
                                         </div>
                                         
                                     </div>
@@ -75,6 +83,6 @@ include('../../admin/layout/header.php');
 
 
 <?php
-include('../../layout/mensaje.php');
 include('../../admin/layout/footer.php');
+include('../layout/mensajes.php');
 ?>

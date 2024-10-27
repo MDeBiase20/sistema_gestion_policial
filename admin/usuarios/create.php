@@ -38,6 +38,38 @@ include('../../admin/layout/header.php');
                                             <input type="password" name="password-repeat" class="form form-control">
                                         </div>
                                     </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="">Nombres</label>
+                                            <input type="text" name="nombres" class="form form-control">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="">Apellido</label>
+                                            <input type="text" name="apellido" class="form form-control">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="">DNI</label>
+                                            <input type="number" name="dni" class="form form-control">
+                                        </div>
+
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="">Dirección</label>
+                                            <input type="text" name="direccion" class="form form-control">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="">Fecha de nacimiento</label>
+                                            <input type="date" name="fecha_nacimiento" class="form form-control">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -59,5 +91,5 @@ include('../../admin/layout/header.php');
 
 <?php
 include('../../admin/layout/footer.php');
-include('../../layout/mensaje.php');
+include('../layout/mensajes.php');
 ?>

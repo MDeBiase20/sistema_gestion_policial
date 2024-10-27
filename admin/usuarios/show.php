@@ -60,5 +60,5 @@ include('../../app/controllers/usuarios/datos_usuarios.php');
 
 <?php
 include('../../admin/layout/footer.php');
-include('../../layout/mensaje.php');
+include('../layout/mensajes.php');
 ?>

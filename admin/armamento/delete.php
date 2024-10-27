@@ -78,6 +78,6 @@ include('../../app/controllers/armas/datos_de_armas.php');
 
 
 <?php
-include('../../layout/mensaje.php');
 include('../../admin/layout/footer.php');
+include('../layout/mensajes.php');
 ?>

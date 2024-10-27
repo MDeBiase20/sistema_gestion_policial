@@ -1,6 +1,23 @@
-<!-- <?php
-  //session_start();
-?> -->
+<?php
+session_start();
+
+if (isset($_SESSION['sesion_email'])) {
+  
+  $email_sesion = $_SESSION['sesion_email'];
+  $query = $pdo->prepare("SELECT * FROM usuarios AS usu
+                            INNER JOIN personas AS per
+                            ON per.usuario_id = usu.id_usuario
+                            WHERE usu.estado = '1' AND usu.correo = '$email_sesion'");
+  $query->execute();
+  $datos_usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
+  
+  foreach($datos_usuarios as $dato_usuario){
+    $nombre_sesion_usuario = $dato_usuario['correo'];
+
+  }
+}
+
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -10,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title><?php echo APP_NAME; ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -18,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo APP_URL;?>/public/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo APP_URL;?>/public/dist/css/adminlte.min.css">
-  <!-- SweetAlert-->
+  <!-- SweetAlert2-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Bootstrap Icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -49,10 +66,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="<?php echo APP_URL;?>/public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -62,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="<?php echo APP_URL;?>/public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo $nombre_sesion_usuario; ?></a>
         </div>
       </div>
 
@@ -122,6 +135,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           <li class="nav-item menu-close">
             <a href="#" class="nav-link active">
+              <i class="bi bi-shield-fill-check"></i>
+              <p>
+                Chalecos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo APP_URL;?>/admin/chalecos" class="nav-link">
+                  <i class="far fa-circle nav-icon" style="color:red"></i>
+                  <p>Listado de chalecos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo APP_URL;?>/admin/chalecos/create.php" class="nav-link">
+                  <i class="far fa-circle nav-icon" style="color:blue"></i>
+                  <p>Registrar chaleco</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link active">
               <i class="bi bi-person-arms-up"></i>
               <p>
                 Policias
@@ -142,6 +179,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo APP_URL;?>/login/logout.php" class="nav-link active" style="background-color:red; color:black;">
+              <i class="bi bi-box-arrow-right"></i>
+              <p>
+                Cerrar Sesión
+              </p>
+            </a>
           </li>
 
         </ul>

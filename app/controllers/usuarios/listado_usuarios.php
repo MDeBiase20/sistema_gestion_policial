@@ -6,4 +6,9 @@ $sentencia->execute();
 
 $usuarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+$contador_usuarios = 0;
+foreach($usuarios as $usuario){
+    $contador_usuarios++;
+}
+
 ?>

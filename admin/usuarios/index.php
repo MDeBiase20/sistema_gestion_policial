@@ -90,7 +90,7 @@
 
 <?php
     include('../../admin/layout/footer.php');
-    include('../../layout/mensaje.php');
+    include('../layout/mensajes.php');
 ?>
 <script>
 $("#example1").DataTable({

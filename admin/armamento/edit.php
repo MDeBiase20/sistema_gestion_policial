@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $id_arma = $_GET['id'];
 
 include('../../app/config.php');
@@ -40,7 +40,15 @@ include('../../app/controllers/armas/datos_de_armas.php');
                                         </div>
                                         <div class="col-md-4">
                                             <label for="">Número de serie</label>
-                                            <input type="number" name="num_serie" value="<?php echo $num_serie; ?>" class="form form-control">
+                                            <input type="number" name="num_serie" value="<?php echo $num_serie; ?>" oninput="limitarDigitos(this, 5)" class="form form-control">
+                                            <!-- Este script hace que el número a ingresar se limite a 5 dígitos para evitar datos erroneos-->
+                                            <script>
+                                                    function limitarDigitos(input, maxLength) {
+                                                        if (input.value.length > maxLength) {
+                                                            input.value = input.value.slice(0, maxLength);
+                                                        }
+                                                    }
+                                                </script>
                                         </div>
                                         
                                     </div>
@@ -78,6 +86,6 @@ include('../../app/controllers/armas/datos_de_armas.php');
 
 
 <?php
-include('../../layout/mensaje.php');
 include('../../admin/layout/footer.php');
+include('../../layout/mensajes.php');
 ?>

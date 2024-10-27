@@ -23,7 +23,7 @@ include('../../../app/config.php');
         session_start();
         $_SESSION['mensaje'] = 'Se registro el arma de manera correcta';
         $_SESSION['icono'] = 'success';
-        header('Location:'.APP_URL.'/admin/armamento');
+        header('Location:'.APP_URL.'/admin');
     }else{
         session_start();
         $_SESSION['mensaje'] = 'Error al registrar el arma a la base de datos';

@@ -22,7 +22,7 @@ if($password == ""){
             session_start();
             $_SESSION['mensaje'] = 'El usuario se actualizó de manera correcta';
             $_SESSION['icono'] = 'success';
-            header('Location:'.APP_URL.'/admin/usuarios');
+            header('Location:'.APP_URL.'/admin');
         }else{
             session_start();
             $_SESSION['mensaje'] = 'No se pudo actualizar el usuario';
@@ -38,6 +38,7 @@ if($password == ""){
 
 }else{
     if($password == $password_repeat){
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $sentencia = $pdo->prepare('UPDATE usuarios
         SET correo=:correo,
             password=:password,
@@ -54,7 +55,7 @@ if($password == ""){
                 session_start();
                 $_SESSION['mensaje'] = 'El usuario se actualizó de manera correcta';
                 $_SESSION['icono'] = 'success';
-                header('Location:'.APP_URL.'/admin/usuarios');
+                header('Location:'.APP_URL.'/admin');
             }else{
                 session_start();
                 $_SESSION['mensaje'] = 'No se pudo actualizar el usuario';
@@ -68,10 +69,10 @@ if($password == ""){
             ?> <script>window.history.back()</script>  <?php
         }
     }else{
-        session_start();
-            $_SESSION['mensaje'] = 'Las contraseñas no son iguales';
+            session_start();
+            $_SESSION['mensaje'] = 'Las contraseñas no son iguales, vuelva a internarlo';
             $_SESSION['icono'] = 'error';
-            ?> <script>window.history.back()</script>  <?php
+            header('Location:'.APP_URL.'/admin');
     }
 } 
 

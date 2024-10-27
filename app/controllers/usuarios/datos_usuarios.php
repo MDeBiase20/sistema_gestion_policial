@@ -1,6 +1,6 @@
 <?php
 
-$query_usuarios = "SELECT * FROM usuarios WHERE estado = 1 AND id_usuario = $id_usuario ";
+$query_usuarios = "SELECT * FROM usuarios WHERE estado = 1 AND id_usuario = '$id_usuario' ";
 $sentencia = $pdo->prepare($query_usuarios);
 $sentencia->execute();
 

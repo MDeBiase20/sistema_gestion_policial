@@ -12,7 +12,7 @@ if($sentencia->execute()){
     session_start();
         $_SESSION['mensaje'] = 'Se eliminó el usuario de la base de datos de forma correcta';
         $_SESSION['icono'] = 'success';
-        header('Location:'.APP_URL."/admin/armamento");
+        header('Location:'.APP_URL."/admin");
 }else{
     session_start();
         $_SESSION['mensaje'] = 'Error al eliminar este registro de la base de datos';

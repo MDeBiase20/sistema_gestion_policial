@@ -8,4 +8,9 @@ $sentencia->execute();
 
 $policias = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+$contador_policias = 0;
+foreach($policias as $policia){
+    $contador_policias ++;
+}
+
 ?>

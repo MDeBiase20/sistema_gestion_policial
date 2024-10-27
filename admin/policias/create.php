@@ -1,6 +1,10 @@
 <?php
+
 include('../../app/config.php');
 include('../../admin/layout/header.php');
+include('../../app/controllers/policias/generador_de_ni.php');
+include('../../app/controllers/armas/listado_de_armas.php');
+include('../../app/controllers/chalecos/listado_de_chalecos.php');
 ?>
 
 <div class="content-wrapper">
@@ -42,13 +46,14 @@ include('../../admin/layout/header.php');
                                             <input type="address" name="direccion" class="form form-control">
                                         </div>
                                     </div>
+                                    <br>
                                 <hr>
 
                                     <div class="row">
 
                                         <div class="col-md-3">
                                             <label for="">NI</label>
-                                            <input type="number" name="ni" class="form form-control">
+                                            <input type="number" name="ni" value="<?php echo $numeroSiguiente; ?>" class="form form-control" readonly>
                                         </div>
 
                                         <div class="col-md-3">
@@ -69,6 +74,38 @@ include('../../admin/layout/header.php');
                                                     <option value="Subdirector de Policía">Subdirector de Policía</option>
                                                     <option value="Director de Policía">Director de Policía</option>
                                                     <option value="Director general de Policía">Director general de Policía</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <br>
+                                    <hr>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <label for="">Arma</label>
+                                            <select name="arma" class="form form-control">
+
+                                                <?php foreach($armas as $arma){ ?>
+
+                                                <option value="<?php echo $arma['id_armas'] ?>"> <?php echo $arma['marca']." - ".$arma['modelo']." - ".$arma['num_serie']; ?> </option>
+
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="">Chaleco</label>
+                                            <select name="chaleco" class="form form-control">
+                                            
+                                                <?php foreach($chalecos as $chaleco){ ?>
+
+                                                <option value="<?php echo $chaleco['id_chalecos'] ?>"> <?php echo $chaleco['nivel_proteccion']." - ".$chaleco['num_serie']." - ".$chaleco['talle']; ?> </option>
+
+                                                <?php } ?>
+
                                             </select>
                                         </div>
                                         
@@ -95,5 +132,5 @@ include('../../admin/layout/header.php');
 
 <?php
 include('../../admin/layout/footer.php');
-include('../../layout/mensaje.php');
+include('../../layout/mensajes.php');
 ?>

@@ -42,5 +42,9 @@
 <script src="<?php echo APP_URL;?>/public/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo APP_URL;?>/public/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+<!---Bootstrap Bundle-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
